@@ -17,8 +17,10 @@ public class Unit : MonoBehaviour {
         if (!hasTarget) {
             closestEnemy = FindClosestEnemy();
         }
-        if (closestEnemy != null && closestEnemy.health > 0) {
+        if (closestEnemy != null) {
             MoveTowards(closestEnemy);
+        } else {
+            hasTarget = false;
         }
 
         if (attackTimer > 0) {
@@ -61,7 +63,6 @@ public class Unit : MonoBehaviour {
         if (distanceToTarget <= attackRange && attackTimer <= 0f) {
             target.TakeDamage(attackPower);
             attackTimer = attackCooldown;
-
         }
     }
 
