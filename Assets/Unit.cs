@@ -11,8 +11,16 @@ public class Unit : MonoBehaviour {
     public float attackRange = 1.0f;
     public int teamId;
     public bool hasTarget = false;
+    public HealthBar healthbar;
+
+    public int currentHealth = 100;
     private Unit closestEnemy;
 
+    void Start()
+    {
+        currentHealth = (int)health;
+        healthbar.SetMAxHealth((int)health);
+    }
     void Update() {
         if (!hasTarget) {
             closestEnemy = FindClosestEnemy();
@@ -24,6 +32,7 @@ public class Unit : MonoBehaviour {
         if (attackTimer > 0) {
             attackTimer -= Time.deltaTime;
         }
+        healthbar.SetHealth((int)health);
     }
 
     Unit FindClosestEnemy() {
