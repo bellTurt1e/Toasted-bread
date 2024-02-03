@@ -21,7 +21,7 @@ public class Unit : MonoBehaviour {
         currentHealth = (int)health;
         healthbar.SetMAxHealth((int)health);
     }
-    void Update() {
+     protected virtual void Update() {
         if (!hasTarget) {
             closestEnemy = FindClosestEnemy();
         }

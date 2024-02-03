@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748171, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -786,7 +786,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 661794310}
   m_HandleRect: {fileID: 0}
-  m_Direction: 0
+  m_Direction: 1
   m_MinValue: 0
   m_MaxValue: 100
   m_WholeNumbers: 0
@@ -879,6 +879,10 @@ MonoBehaviour:
   healthbar: {fileID: 369748746}
   currentHealth: 100
   spellPower: 20
+  mana: 0
+  maxMana: 100
+  manaIncreaseRate: 5
+  manaBar: {fileID: 1982707980}
 --- !u!65 &505596674
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1553,7 +1557,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 792520041}
   m_HandleRect: {fileID: 0}
-  m_Direction: 0
+  m_Direction: 1
   m_MinValue: 0
   m_MaxValue: 100
   m_WholeNumbers: 0
@@ -2347,6 +2351,10 @@ MonoBehaviour:
   healthbar: {fileID: 847391846}
   currentHealth: 100
   spellPower: 20
+  mana: 0
+  maxMana: 100
+  manaIncreaseRate: 5
+  manaBar: {fileID: 440104036}
 --- !u!54 &1673327745
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2446,6 +2454,10 @@ MonoBehaviour:
   healthbar: {fileID: 27169095}
   currentHealth: 100
   spellPower: 20
+  mana: 0
+  maxMana: 100
+  manaIncreaseRate: 5
+  manaBar: {fileID: 1112356117}
 --- !u!65 &1787575093
 BoxCollider:
   m_ObjectHideFlags: 0
