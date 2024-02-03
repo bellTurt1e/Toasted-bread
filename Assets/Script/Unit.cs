@@ -76,7 +76,7 @@ public class Unit : MonoBehaviour {
         }
     }
 
-    private void TakeDamage(float attackPower) {
+    public void TakeDamage(float attackPower) {
         health -= attackPower - defense;
         if (health <= 0) {
             KillUnit();

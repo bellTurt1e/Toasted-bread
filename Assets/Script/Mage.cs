@@ -26,5 +26,14 @@ public class Mage : Unit {
         //upadtes the mana bar
         manaBar.SetMana(mana);
     }
+    public override void Attack(Unit target){
     // Additional mage-specific methods and properties can be added here
+        float distanceToTarget = Vector3.Distance(transform.position, target.transform.position);
+        if (distanceToTarget <= attackRange && attackTimer <= 0f) {
+            target.TakeDamage(attackPower);
+            attackTimer = attackCooldown;
+            mana += manaIncreaseRate;
+        }
+        manaBar.SetMana(mana);
+    }
 }
