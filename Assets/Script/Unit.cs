@@ -9,7 +9,7 @@ public class Unit : MonoBehaviour {
     public float attackCooldown = 1.0f;
     public float magicalDefense = 5f;
     public float physicalDefense = 5f;
-    public float movementSpeed = 5f;
+    public float movementSpeed = 25f;
     public float attackRange = 1.0f;
     public int teamId;
 

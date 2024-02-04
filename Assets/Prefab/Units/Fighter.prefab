@@ -126,7 +126,7 @@ MonoBehaviour:
   attackCooldown: 1.1
   magicalDefense: 30
   physicalDefense: 45
-  movementSpeed: 5
+  movementSpeed: 17
   attackRange: 10
   teamId: 0
   healthBar: {fileID: 2785623098305327251}
