@@ -74,8 +74,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4290773247
+  m_fontColor: {r: 1, g: 0, b: 0.7529412, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -428,7 +428,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0500b4eadcd168549a253648d44afe12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 0}
 --- !u!1 &5043888311068229622
 GameObject:
   m_ObjectHideFlags: 0
@@ -823,7 +822,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: ef70a2aced036724cac04341b459e0f8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -882,12 +881,12 @@ MonoBehaviour:
   maxHealth: 0
   basicAttack: 10
   attackTimer: 0
-  attackCooldown: 1
-  magicalDefense: 5
-  physicalDefense: 5
+  attackCooldown: 1.3
+  magicalDefense: 10
+  physicalDefense: 25
   movementSpeed: 5
-  attackRange: 20
-  teamId: 7
+  attackRange: 10
+  teamId: 0
   healthBar: {fileID: 3113814356819964741}
   projectilePrefab: {fileID: 3019108218808229213, guid: 2dbdd854f615d9c45b93d0a23342618c, type: 3}
   power: 20
