@@ -88,26 +88,43 @@ public class Unit : MonoBehaviour {
     }
 
     public void TakeDamage(float damage, string damageType) {
+        float effectiveDamage = damage;
+
         switch (damageType) {
             case "mag":
-                health -= damage - magicalDefense;
+                float magBlockPercent = CalculateBlockPercentage(magicalDefense);
+                effectiveDamage = damage * (1f - magBlockPercent / 100f);
                 break;
             case "phy":
-                health -= damage - physicalDefense;
+                float phyBlockPercent = CalculateBlockPercentage(physicalDefense);
+                effectiveDamage = damage * (1f - phyBlockPercent / 100f);
                 break;
             case "both":
-                health -= damage - (physicalDefense + magicalDefense);
+                float combinedBlockPercent = (CalculateBlockPercentage(magicalDefense) + CalculateBlockPercentage(physicalDefense)) / 2f;
+                effectiveDamage = damage * (1f - combinedBlockPercent / 100f);
                 break;
             case "pure":
-                health -= damage;
+                // Pure damage is not reduced by defenses
                 break;
         }
+
+        health -= effectiveDamage;
 
         healthBar.SetHealth((int)health);
 
         if (health <= 0) {
             KillUnit();
         }
+    }
+
+    private float CalculateBlockPercentage(float defense) {
+        // Parameters to control the defense effectiveness
+        float defenseScalingFactor = 10f; // Adjusts how quickly defense effectiveness scales
+        float maxBlockPercent = 75f; // The asymptotic limit of the block percentage
+
+        // Logarithmic function to calculate block percentage with diminishing returns
+        float blockPercent = maxBlockPercent * (1f - Mathf.Exp(-defense / defenseScalingFactor));
+        return blockPercent;
     }
 
     public void getHealed(float healAmount) {

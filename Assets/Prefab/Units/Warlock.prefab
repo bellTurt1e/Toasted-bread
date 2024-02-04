@@ -74,8 +74,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4290773247
+  m_fontColor: {r: 1, g: 0, b: 0.7529412, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -428,7 +428,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0500b4eadcd168549a253648d44afe12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 0}
 --- !u!1 &3782135358165945218
 GameObject:
   m_ObjectHideFlags: 0
@@ -748,7 +747,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: eccea482283f7cd4d8e6fefbef6c2d14, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -812,7 +811,7 @@ MonoBehaviour:
   physicalDefense: 5
   movementSpeed: 5
   attackRange: 50
-  teamId: 5
+  teamId: 0
   healthBar: {fileID: 7070844942516995585}
   projectilePrefab: {fileID: 3019108218808229213, guid: 2dbdd854f615d9c45b93d0a23342618c, type: 3}
   spellPower: 20
