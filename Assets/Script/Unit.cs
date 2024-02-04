@@ -2,8 +2,8 @@ using System;
 using UnityEngine;
 
 public class Unit : MonoBehaviour {
-    public float health = 100f;
-    public float maxHealth;
+    public int health = 100;
+    public int maxHealth;
     public float basicAttack = 10f;
     public float attackTimer = 0;
     public float attackCooldown = 1.0f;
@@ -20,9 +20,12 @@ public class Unit : MonoBehaviour {
     protected bool hasTarget = false;
     protected bool inRange = false;
 
+    public delegate void UnitDeathHandler(Unit unit);
+    public static event UnitDeathHandler OnUnitDeath;
+
     protected virtual void Start() {
         maxHealth = health;
-        healthBar.SetMaxHealth((int)maxHealth);
+        healthBar.SetMaxHealth(maxHealth);
     }
 
      protected virtual void Update() {
@@ -73,18 +76,21 @@ public class Unit : MonoBehaviour {
         }
     }
 
-    protected virtual void Attack(Unit target) {
+    protected virtual bool Attack(Unit target) {
         float distanceToTarget = Vector3.Distance(transform.position, target.transform.position);
         if (distanceToTarget <= attackRange && attackTimer <= 0f) {
             GameObject projectileObject = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
             ProjectileBall projectile = projectileObject.GetComponent<ProjectileBall>();
 
             if (projectile != null) {
-                projectile.Initialize(target, basicAttack, "phy"); // Set the target and damage for the projectile
+                projectile.Initialize(target, basicAttack, "phy");
             }
 
-            attackTimer = attackCooldown; // Reset the attack timer
+            attackTimer = attackCooldown;
+            return true;
         }
+
+        return false;
     }
 
     public void TakeDamage(float damage, string damageType) {
@@ -104,11 +110,11 @@ public class Unit : MonoBehaviour {
                 effectiveDamage = damage * (1f - combinedBlockPercent / 100f);
                 break;
             case "pure":
-                // Pure damage is not reduced by defenses
+                // Pure damage bypasses all defense
                 break;
         }
 
-        health -= effectiveDamage;
+        health -= (int)Mathf.Round(effectiveDamage);
 
         healthBar.SetHealth((int)health);
 
@@ -118,21 +124,20 @@ public class Unit : MonoBehaviour {
     }
 
     private float CalculateBlockPercentage(float defense) {
-        // Parameters to control the defense effectiveness
-        float defenseScalingFactor = 10f; // Adjusts how quickly defense effectiveness scales
-        float maxBlockPercent = 75f; // The asymptotic limit of the block percentage
+        float defenseScalingFactor = 10f;
+        float maxBlockPercent = 75f;
 
-        // Logarithmic function to calculate block percentage with diminishing returns
         float blockPercent = maxBlockPercent * (1f - Mathf.Exp(-defense / defenseScalingFactor));
         return blockPercent;
     }
 
     public void getHealed(float healAmount) {
-        health = Mathf.Min(health + healAmount, maxHealth);
+        health = (int)Mathf.Min(health + healAmount, maxHealth);
         healthBar.SetHealth((int)health);
     }
 
     protected virtual void KillUnit() {
+        OnUnitDeath?.Invoke(this);
         Destroy(gameObject);
     }
 }
