@@ -8,19 +8,15 @@ public class Warlock : Unit {
     public float manaIncreaseRate = 5.0f;
     public ManaBar manaBar;
     
-
-
-    protected override void Start()
-    {
+    protected override void Start() {
         base.Start();
         manaBar.SetMana(0f);
         manaBar.SetMaxMana(maxMana);
     }
 
-    protected override void Update()
-    {
+    protected override void Update() {
         base.Update();
-        mana += manaIncreaseRate * Time.deltaTime;
+        mana = Mathf.Min(mana + manaIncreaseRate * Time.deltaTime, maxMana);
         manaBar.SetMana(mana);
 
         if (mana >= maxMana && inRange && hasTarget) {
@@ -29,11 +25,9 @@ public class Warlock : Unit {
     }
 
     private void PerformSpecialAttack(){
-        float healingAmount = 15f + (0.2f * spellPower);
-        getHealed(healingAmount);
+        getHealed(15f + (0.2f * spellPower));
         closestEnemy.TakeDamage(30f + (1.5f * spellPower), "mag");
         mana = 0;
         manaBar.SetMana(mana);
-        mana = 0;
     }
 }
