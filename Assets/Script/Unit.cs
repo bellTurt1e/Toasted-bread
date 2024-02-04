@@ -3,25 +3,27 @@ using UnityEngine;
 
 public class Unit : MonoBehaviour {
     public float health = 100f;
-    public float attackPower = 10f;
+    public float basicAttack = 10f;
     public float attackTimer = 0;
     public float attackCooldown = 1.0f;
-    public float defense = 5f;
+    public float magicalDefense = 5f;
+    public float physicalDefense = 5f;
     public float movementSpeed = 5f;
     public float attackRange = 1.0f;
     public int teamId;
+
+    public HealthBar healthBar;
+    protected Unit closestEnemy;
+
     public bool hasTarget = false;
-    public HealthBar healthbar;
+    protected bool inRange = false;
 
-    public int currentHealth = 100;
-    private Unit closestEnemy;
-
-    void Start()
-    {
-        currentHealth = (int)health;
-        healthbar.SetMAxHealth((int)health);
+    protected virtual void Start() {
+        healthBar.SetMaxHealth((int)health);
     }
+
      protected virtual void Update() {
+        
         if (!hasTarget) {
             closestEnemy = FindClosestEnemy();
         }
@@ -34,10 +36,9 @@ public class Unit : MonoBehaviour {
         if (attackTimer > 0) {
             attackTimer -= Time.deltaTime;
         }
-        healthbar.SetHealth((int)health);
     }
 
-    Unit FindClosestEnemy() {
+    private Unit FindClosestEnemy() {
         Unit[] allUnits = FindObjectsOfType<Unit>();
         Unit closestEnemy = null;
         float minDistance = Mathf.Infinity;
@@ -56,28 +57,40 @@ public class Unit : MonoBehaviour {
         return closestEnemy;
     }
 
-    void MoveTowards(Unit enemy) {
+    private void MoveTowards(Unit enemy) {
         float distance = Vector3.Distance(transform.position, enemy.transform.position);
         if (distance > attackRange) {
             transform.position = Vector3.MoveTowards(transform.position, enemy.transform.position, movementSpeed * Time.deltaTime);
+            inRange = false;
         }
         else {
             Attack(enemy);
             hasTarget = true;
+            inRange = true;
         }
     }
 
-    public virtual void Attack(Unit target) {
+    protected virtual void Attack(Unit target) {
         float distanceToTarget = Vector3.Distance(transform.position, target.transform.position);
         if (distanceToTarget <= attackRange && attackTimer <= 0f) {
-            target.TakeDamage(attackPower);
+            target.TakeDamage(basicAttack, "phy");
             attackTimer = attackCooldown;
-
         }
     }
 
-    public void TakeDamage(float attackPower) {
-        health -= attackPower - defense;
+    public void TakeDamage(float damage, string damageType) {
+        switch (damageType) {
+            case "mag":
+                health -= damage - magicalDefense;
+                break;
+            case "phy":
+                health -= damage - physicalDefense;
+                break;
+            case "both":
+                health -= damage - (physicalDefense + magicalDefense);
+                break;
+        }
+
         if (health <= 0) {
             KillUnit();
         }

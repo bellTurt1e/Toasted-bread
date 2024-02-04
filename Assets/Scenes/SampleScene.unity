@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748171, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1402,16 +1402,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
-  attackPower: 20
+  basicAttack: 10
   attackTimer: 0
   attackCooldown: 1
-  defense: 5
+  magicalDefense: 5
+  physicalDefense: 5
   movementSpeed: 5
   attackRange: 10
   teamId: 0
+  healthBar: {fileID: 369748746}
   hasTarget: 0
-  healthbar: {fileID: 369748746}
-  currentHealth: 100
   spellPower: 20
   mana: 0
   maxMana: 100
@@ -3536,19 +3536,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
-  attackPower: 10
+  basicAttack: 10
   attackTimer: 0
   attackCooldown: 1
-  defense: 5
+  magicalDefense: 5
+  physicalDefense: 5
   movementSpeed: 5
   attackRange: 10
   teamId: 0
+  healthBar: {fileID: 1664035952}
   hasTarget: 0
-  healthbar: {fileID: 1664035952}
-  currentHealth: 100
-  Power: 20
+  power: 20
   rage: 0
-  maxrage: 100
+  maxRage: 30
   rageIncreaseRate: 5
   rageBar: {fileID: 1009157336}
 --- !u!65 &1160225393
@@ -3902,7 +3902,7 @@ Transform:
   m_GameObject: {fileID: 1285325070}
   serializedVersion: 2
   m_LocalRotation: {x: 0.35159478, y: -0, z: -0, w: 0.93615234}
-  m_LocalPosition: {x: -0.23940659, y: 44.85, z: -44.17}
+  m_LocalPosition: {x: -0.23940659, y: 57.1, z: -58.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4726,17 +4726,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53a6fbedc5de89149afb2db527ef2df3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
-  attackPower: 10
+  health: 600
+  basicAttack: 10
   attackTimer: 0
   attackCooldown: 2
-  defense: 5
+  magicalDefense: 5
+  physicalDefense: 5
   movementSpeed: 5
   attackRange: 10
   teamId: 1
+  healthBar: {fileID: 847391846}
   hasTarget: 0
-  healthbar: {fileID: 847391846}
-  currentHealth: 100
   spellPower: 20
   mana: 0
   maxMana: 100
@@ -4830,16 +4830,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
-  attackPower: 10
+  basicAttack: 10
   attackTimer: 0
   attackCooldown: 2
-  defense: 5
+  magicalDefense: 5
+  physicalDefense: 5
   movementSpeed: 5
   attackRange: 10
   teamId: 2
+  healthBar: {fileID: 27169095}
   hasTarget: 0
-  healthbar: {fileID: 27169095}
-  currentHealth: 100
   spellPower: 20
   mana: 0
   maxMana: 100
