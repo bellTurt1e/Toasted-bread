@@ -20,13 +20,14 @@ public class Fighter : Unit {
     protected override void Update()
     {
         base.Update();
-        if (rage >= maxRage && inRange) {
+        if (rage >= maxRage && inRange && hasTarget) {
             PerformSpecialAttack();
         }
     }
 
     private void PerformSpecialAttack() {
-        closestEnemy.TakeDamage(20+(2*power), "phy");
+        closestEnemy.TakeDamage(20 + (2*power), "phy");
+        power += basicAttack;
         rage = 0;
         rageBar.SetMana(rage);
     }

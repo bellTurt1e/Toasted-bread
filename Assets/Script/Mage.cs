@@ -4,7 +4,7 @@ using UnityEngine.Analytics;
 public class Mage : Unit {
     public float spellPower = 20f;
     public float mana = 0f;
-    public float maxMana = 100.0f;  // Set your desired maximum mana value
+    public float maxMana = 100.0f;
     public float manaIncreaseRate = 5.0f;
     public ManaBar manaBar;
 

@@ -3,7 +3,6 @@ using UnityEngine;
 public class Warrior : UnitBase
 {
     public float rage = 0f;
-    private Unit closestEnemy;
     public float maxRage = 100.0f;
     public float rageIncreaseRate = 5.0f;
     public ManaBar manaBar;
