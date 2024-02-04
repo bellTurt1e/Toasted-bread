@@ -15,6 +15,7 @@ public class Unit : MonoBehaviour {
 
     public HealthBar healthBar;
     protected Unit closestEnemy;
+    public GameObject projectilePrefab;
 
     protected bool hasTarget = false;
     protected bool inRange = false;
@@ -75,8 +76,14 @@ public class Unit : MonoBehaviour {
     protected virtual void Attack(Unit target) {
         float distanceToTarget = Vector3.Distance(transform.position, target.transform.position);
         if (distanceToTarget <= attackRange && attackTimer <= 0f) {
-            target.TakeDamage(basicAttack, "phy");
-            attackTimer = attackCooldown;
+            GameObject projectileObject = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+            ProjectileBall projectile = projectileObject.GetComponent<ProjectileBall>();
+
+            if (projectile != null) {
+                projectile.Initialize(target, basicAttack, "phy"); // Set the target and damage for the projectile
+            }
+
+            attackTimer = attackCooldown; // Reset the attack timer
         }
     }
 
