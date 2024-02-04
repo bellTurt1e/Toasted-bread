@@ -26,7 +26,7 @@ public class Fighter : Unit {
     }
 
     private void PerformSpecialAttack() {
-        closestEnemy.TakeDamage(20+(2*power), "psy");
+        closestEnemy.TakeDamage(20+(2*power), "phy");
         rage = 0;
         rageBar.SetMana(rage);
     }

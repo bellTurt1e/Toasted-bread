@@ -89,7 +89,12 @@ public class Unit : MonoBehaviour {
             case "both":
                 health -= damage - (physicalDefense + magicalDefense);
                 break;
+            case "pure":
+                health -= damage;
+                break;
         }
+
+        healthBar.SetHealth((int)health);
 
         if (health <= 0) {
             KillUnit();
