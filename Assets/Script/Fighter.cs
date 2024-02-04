@@ -3,31 +3,42 @@ using UnityEngine;
 using UnityEngine.Analytics;
 
 public class Fighter : Unit {
-    public float Power = 20f;
+    public float power = 20f;
     public float rage = 0f;
-    public float maxrage = 100.0f;  // Set your desired maximum mana value
+    public float maxRage = 100.0f;
     public float rageIncreaseRate = 5.0f;
     public ManaBar rageBar;
     
 
-    void Start()
+    protected override void Start()
     {
-        rageBar.SetMana(0f);
+        base.Start();
+        rageBar.SetMaxMana(maxRage);
+        rageBar.SetMana(rage);
     }
 
     protected override void Update()
     {
         base.Update();
-        
-    }
-    public override void Attack(Unit target){
-    // Additional mage-specific methods and properties can be added here
-        float distanceToTarget = Vector3.Distance(transform.position, target.transform.position);
-        if (distanceToTarget <= attackRange && attackTimer <= 0f) {
-            target.TakeDamage(attackPower);
-            attackTimer = attackCooldown;
-            rage += rageIncreaseRate;
+        if (rage >= maxRage && inRange) {
+            PerformSpecialAttack();
         }
+    }
+
+    private void PerformSpecialAttack() {
+        closestEnemy.TakeDamage(20+(2*power), "phy");
+        rage = 0;
         rageBar.SetMana(rage);
+    }
+
+    protected override void Attack(Unit target) {
+        float targetHP = target.health;
+        base.Attack(target);
+        float targetNewHP = target.health;
+
+        if (targetNewHP < targetHP) {
+            rage += rageIncreaseRate;
+            rageBar.SetMana(rage);
+        }
     }
 }

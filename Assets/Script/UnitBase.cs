@@ -22,7 +22,7 @@ public abstract class UnitBase : MonoBehaviour, IDamageable
     private UnitBase closestEnemy;
     protected virtual void Start()
     {
-        healthBar.SetMAxHealth((int)health);
+        healthBar.SetMaxHealth((int)health);
     }
 
     protected virtual void Update()
