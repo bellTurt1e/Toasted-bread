@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class Unit : MonoBehaviour {
     public float health = 100f;
+    public float maxHealth;
     public float basicAttack = 10f;
     public float attackTimer = 0;
     public float attackCooldown = 1.0f;
@@ -15,11 +16,12 @@ public class Unit : MonoBehaviour {
     public HealthBar healthBar;
     protected Unit closestEnemy;
 
-    public bool hasTarget = false;
+    protected bool hasTarget = false;
     protected bool inRange = false;
 
     protected virtual void Start() {
-        healthBar.SetMaxHealth((int)health);
+        maxHealth = health;
+        healthBar.SetMaxHealth((int)maxHealth);
     }
 
      protected virtual void Update() {
@@ -99,6 +101,11 @@ public class Unit : MonoBehaviour {
         if (health <= 0) {
             KillUnit();
         }
+    }
+
+    public void getHealed(float healAmount) {
+        health = Mathf.Min(health + healAmount, maxHealth);
+        healthBar.SetHealth((int)health);
     }
 
     protected virtual void KillUnit() {
