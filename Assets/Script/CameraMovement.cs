@@ -12,7 +12,6 @@ public class FreeCameraControl : MonoBehaviour {
     }
 
     void Update() {
-        // Mouse rotation
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
 
@@ -21,11 +20,10 @@ public class FreeCameraControl : MonoBehaviour {
 
         transform.localRotation = Quaternion.Euler(xRotation, transform.localEulerAngles.y + mouseX, 0f);
 
-        // Camera movement - now relative to camera's facing direction
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
         Vector3 movementDirection = new Vector3(horizontalInput, 0, verticalInput);
-        movementDirection = transform.TransformDirection(movementDirection); // Transform direction from local to world space
+        movementDirection = transform.TransformDirection(movementDirection);
         transform.Translate(movementDirection * movementSpeed * Time.deltaTime, Space.World);
     }
 }

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Analytics;
 
@@ -25,9 +26,64 @@ public class Warlock : Unit {
     }
 
     private void PerformSpecialAttack(){
-        getHealed(15f + (0.2f * spellPower));
-        closestEnemy.TakeDamage(30f + (1.5f * spellPower), "mag");
+        float curseDuration = 9f;
+        StartCoroutine(ApplyCurse(closestEnemy, (8f + (spellPower * 0.3f)), (15f + (spellPower *0.2f)), curseDuration));
+        StartCoroutine(HealSelf((5f + (spellPower * 0.1f)), curseDuration));
         mana = 0;
         manaBar.SetMana(mana);
     }
+
+    IEnumerator ApplyCurse(Unit target, float damagePerSecond, float attackPowerLowered, float totalDuration) {
+        if (target == null) yield break;
+
+        float timePassed = 0f;
+        float halfDuration = totalDuration / 3f;
+        bool attackPowerReduced = false;
+        float originalBasicAttack = target.basicAttack;
+
+        while (timePassed < totalDuration) {
+            if (target == null) {
+                if (attackPowerReduced) {
+                    target.basicAttack = originalBasicAttack;
+                }
+                yield break;
+            }
+
+            target.TakeDamage(damagePerSecond, "mag");
+
+            if (timePassed < halfDuration && !attackPowerReduced) {
+                target.basicAttack -= attackPowerLowered;
+                attackPowerReduced = true;
+            }
+
+            yield return new WaitForSeconds(1f);
+            timePassed += 1f;
+
+            if (timePassed >= halfDuration && attackPowerReduced) {
+                target.basicAttack = originalBasicAttack;
+                attackPowerReduced = false;
+            }
+        }
+
+        if (attackPowerReduced) {
+            target.basicAttack = originalBasicAttack;
+        }
+    }
+
+    IEnumerator HealSelf(float totalHealAmount, float duration = 9f) {
+        float timePassed = 0f;
+        float healInterval = 1f;
+        float healPerTick = totalHealAmount / duration * healInterval;
+
+        while (timePassed < duration) {
+            if (this == null || gameObject == null) {
+                yield break;
+            }
+
+            getHealed(healPerTick);
+            yield return new WaitForSeconds(healInterval);
+            timePassed += healInterval;
+        }
+    }
+
 }
