@@ -17,18 +17,19 @@ public class CameraLockOn : MonoBehaviour {
 
     void Update() {
         if (Input.GetKeyDown(KeyCode.UpArrow)) {
-            isMainView = !isMainView;
-            Transform currentAnchor = isMainView ? playerBoardAnchor : opponentBoardAnchor;
-            SetCameraPosition(currentAnchor, isMainView);
-            StartCoroutine(fadeController.FadeOutIn());
-
+            StartCoroutine(fadeController.FadeOutIn(() =>
+            {
+                isMainView = !isMainView;
+                Transform currentAnchor = isMainView ? playerBoardAnchor : opponentBoardAnchor;
+                SetCameraPosition(currentAnchor, isMainView);
+            }));
         }
         else if (Input.GetKeyDown(KeyCode.DownArrow)) {
-            isMainView = !isMainView;
-            Transform currentAnchor = isMainView ? playerBoardAnchor : opponentBoardAnchor;
-            SetCameraPosition(currentAnchor, isMainView);
-            StartCoroutine(fadeController.FadeOutIn());
-
+            StartCoroutine(fadeController.FadeOutIn(() => {
+                isMainView = !isMainView;
+                Transform currentAnchor = isMainView ? playerBoardAnchor : opponentBoardAnchor;
+                SetCameraPosition(currentAnchor, isMainView);
+            }));
         }
     }
 
