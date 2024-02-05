@@ -12,6 +12,7 @@ public class Unit : MonoBehaviour {
     public float movementSpeed = 25f;
     public float attackRange = 1.0f;
     public int teamId;
+    public int enemyTeamId;
 
     public HealthBar healthBar;
     protected Unit closestEnemy;
@@ -43,7 +44,6 @@ public class Unit : MonoBehaviour {
             attackTimer -= Time.deltaTime;
         }
     }
-
     private Unit FindClosestEnemy() {
         Unit[] allUnits = FindObjectsOfType<Unit>();
         Unit closestEnemy = null;
@@ -51,7 +51,7 @@ public class Unit : MonoBehaviour {
         Vector3 currentPosition = transform.position;
 
         foreach (Unit unit in allUnits) {
-            if (unit.teamId != this.teamId) {
+            if (unit.teamId != this.teamId && unit.teamId == this.enemyTeamId) {
                 float distance = Vector3.Distance(unit.transform.position, currentPosition);
                 if (distance < minDistance) {
                     closestEnemy = unit;
@@ -62,6 +62,7 @@ public class Unit : MonoBehaviour {
 
         return closestEnemy;
     }
+
 
     private void MoveTowards(Unit enemy) {
         float distance = Vector3.Distance(transform.position, enemy.transform.position);

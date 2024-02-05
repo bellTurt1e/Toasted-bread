@@ -1,11 +1,8 @@
 using UnityEngine;
-using System.Collections;
 
 public class ArenaCameraSwitcher : MonoBehaviour {
     public Camera[] cameras;
     private int currentCameraIndex;
-    public FadeController fadeController;
-    private bool isTransitioning = false; // Flag to indicate if a transition is in progress
 
     void Start() {
         foreach (Camera cam in cameras) {
@@ -18,25 +15,14 @@ public class ArenaCameraSwitcher : MonoBehaviour {
     }
 
     void Update() {
-        if (!isTransitioning) // Check if a transition is not already in progress
-        {
-            if (Input.GetKeyDown(KeyCode.LeftArrow)) {
-                isTransitioning = true; // Set the flag to true to block other transitions
-                StartCoroutine(fadeController.FadeOutIn(() => {
-                    SwitchCamera(-1);
-                    isTransitioning = false; // Reset the flag when transition is complete
-                }));
-
-            }
-            else if (Input.GetKeyDown(KeyCode.RightArrow)) {
-                isTransitioning = true; // Set the flag to true to block other transitions
-                StartCoroutine(fadeController.FadeOutIn(() => {
-                    SwitchCamera(1);
-                    isTransitioning = false; // Reset the flag when transition is complete
-                }));
-            }
+        if (Input.GetKeyDown(KeyCode.LeftArrow)) {
+            SwitchCamera(-1);
+        }
+        else if (Input.GetKeyDown(KeyCode.RightArrow)) {
+            SwitchCamera(1);
         }
     }
+
 
     void SwitchCamera(int direction) {
         cameras[currentCameraIndex].gameObject.SetActive(false);
