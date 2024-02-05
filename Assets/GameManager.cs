@@ -5,7 +5,6 @@ public class GameManager : MonoBehaviour {
 
     private void Start() {
         SpawnPlayer(1, "Cam");
-        SpawnPlayer(2, "Dog");
     }
 
     public void SpawnPlayer(int playerId, string playerName) {
