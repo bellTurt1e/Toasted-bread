@@ -15,15 +15,19 @@ public class CameraLockOn : MonoBehaviour {
     }
 
     void Update() {
-        // Toggle the camera view between the main and opposing views when the spacebar is pressed
-        if (Input.GetKeyDown(KeyCode.Space)) {
-            isMainView = !isMainView; // Toggle the view state
-
-            // Choose the appropriate board anchor based on the current view state
+        if (Input.GetKeyDown(KeyCode.UpArrow)) {
+            isMainView = !isMainView;
+            Transform currentAnchor = isMainView ? playerBoardAnchor : opponentBoardAnchor;
+            SetCameraPosition(currentAnchor, isMainView);
+        }
+        else if (Input.GetKeyDown(KeyCode.DownArrow)) {
+            isMainView = !isMainView;
             Transform currentAnchor = isMainView ? playerBoardAnchor : opponentBoardAnchor;
             SetCameraPosition(currentAnchor, isMainView);
         }
     }
+
+
 
     void SetCameraPosition(Transform boardAnchor, bool isMainView) {
         // Calculate the offset from the board anchor based on the fixed distance and angle

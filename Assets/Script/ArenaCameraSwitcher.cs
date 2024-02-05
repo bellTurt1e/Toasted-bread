@@ -1,37 +1,34 @@
 using UnityEngine;
 
 public class ArenaCameraSwitcher : MonoBehaviour {
-    public Camera[] cameras; // Array to hold all the cameras
-    private int currentCameraIndex; // To keep track of the currently active camera
+    public Camera[] cameras;
+    private int currentCameraIndex;
 
     void Start() {
-        // Deactivate all cameras except the first one
         foreach (Camera cam in cameras) {
             cam.gameObject.SetActive(false);
         }
 
         if (cameras.Length > 0) {
-            cameras[0].gameObject.SetActive(true); // Activate the first camera
+            cameras[0].gameObject.SetActive(true);
         }
     }
 
     void Update() {
-        if (Input.GetMouseButtonDown(0)) // Left mouse button
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            SwitchCamera(1); // Move to the next camera
+            SwitchCamera(-1);
         }
-        else if (Input.GetMouseButtonDown(1)) // Right mouse button
+        else if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            SwitchCamera(-1); // Move to the previous camera
+            SwitchCamera(1);
         }
     }
 
+
     void SwitchCamera(int direction) {
-        cameras[currentCameraIndex].gameObject.SetActive(false); // Deactivate the current camera
-
-        // Calculate the new camera index using modulo to wrap around
+        cameras[currentCameraIndex].gameObject.SetActive(false);
         currentCameraIndex = (currentCameraIndex + direction + cameras.Length) % cameras.Length;
-
-        cameras[currentCameraIndex].gameObject.SetActive(true); // Activate the new camera
+        cameras[currentCameraIndex].gameObject.SetActive(true);
     }
 }
