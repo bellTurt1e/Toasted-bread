@@ -27,8 +27,7 @@ public class Mage : Unit {
     }
 
     private void PerformSpecialAttack() {
-        //int rand = Random.Range(0, 2);
-        int rand = 1;
+        int rand = Random.Range(0, 2);
         switch (rand) {
             case 0:
                 closestEnemy.TakeDamage(50 * 1.75f, "mag"); // Deal 50 damage then slow the enemies attack speed for 3 seconds
@@ -61,7 +60,6 @@ public class Mage : Unit {
         }
     }
 
-
     IEnumerator ApplyBurn(Unit target, float damagePerSecond, float duration) {
         float timePassed = 0f;
 
@@ -90,6 +88,4 @@ public class Mage : Unit {
             timePassed += 1f;
         }
     }
-
-
 }
