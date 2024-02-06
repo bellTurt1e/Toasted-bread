@@ -11,6 +11,9 @@ public class ShopManagerScript : MonoBehaviour
     public float coins;
     public TextMeshProUGUI CoinsTXT;
     public GameObject[] unitPrefabs = new GameObject[5]; // Drag your unit prefabs into this array in the Unity Editor.
+    public Button[] shopButtons = new Button[5]; // Drag your shop buttons into this array in the Unity Editor.
+    public Transform shopPanel; // Drag your shop panel into this field in the Unity Editor.
+
     void Start()
     {
         CoinsTXT.text = "Coins:" + coins.ToString();
@@ -33,6 +36,10 @@ public class ShopManagerScript : MonoBehaviour
         shopItems[3,3] = 10;
         shopItems[3,4] = 10;
         shopItems[3,5] = 20;
+        ShuffleShopItems();
+        ShuffleShopButtons();
+        UpdateShopUI();
+
     }
 
     public void Buy()
@@ -61,6 +68,72 @@ public class ShopManagerScript : MonoBehaviour
         {
             Debug.LogError("Invalid unit index");
         }
+    }
+    public void ShuffleShopButtons()
+    {
+        // Randomize the order of shopButtons
+        System.Random rng = new System.Random();
+        int n = shopButtons.Length;
+        while (n > 1)
+        {
+            n--;
+            int k = rng.Next(n + 1);
+            Button value = shopButtons[k];
+            shopButtons[k] = shopButtons[n];
+            shopButtons[n] = value;
+        }
+    }
+
+    public void ShuffleShopItems()
+    {
+        // Randomize the order of units in the shop
+        System.Random rng = new System.Random();
+        int n = unitPrefabs.Length;
+        while (n > 1)
+        {
+            n--;
+            int k = rng.Next(n + 1);
+            int value = shopItems[1, k + 1];
+            shopItems[1, k + 1] = shopItems[1, n + 1];
+            shopItems[1, n + 1] = value;
+        }
+    }
+
+    void UpdateShopUI()
+    {
+        CoinsTXT.text = "Coins: " + coins.ToString();
+
+        // Clear existing items in the shop panel
+        foreach (Transform child in shopPanel)
+        {
+            Destroy(child.gameObject);
+        }
+
+        // Traverse through shuffled shop buttons and create UI elements for each item in the panel
+        for (int i = 0; i < shopButtons.Length; i++)
+        {
+            // Instantiate the shuffled button and set its parent to the shop panel
+            Button shopButton = Instantiate(shopButtons[i], shopPanel);
+        }
+    }
+
+    public void DestroyButton(Button button)
+    {
+        // Check if the button exists
+        if (button != null)
+        {
+            // Destroy the button's GameObject
+            Destroy(button.gameObject);
+
+            // Optionally, you might want to update your UI or perform other actions after destroying the button
+            // UpdateShopUI(); // Uncomment this line if you have a function to update the shop UI
+        }
+    }
+    
+    public void RefreshShop()
+    {
+        ShuffleShopButtons();
+        UpdateShopUI();
     }
 
     void Update()

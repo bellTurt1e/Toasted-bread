@@ -619,6 +619,42 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 259427925}
   m_CullTransparentMesh: 1
+--- !u!1 &269298625
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 269298626}
+  m_Layer: 0
+  m_Name: Hero Buttons
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &269298626
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 269298625}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.20508745, y: 0.93340385, z: 12.727162}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1103506436}
+  - {fileID: 954353899}
+  - {fileID: 1011984986}
+  - {fileID: 830915188}
+  - {fileID: 380607984}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &380607983
 GameObject:
   m_ObjectHideFlags: 0
@@ -649,17 +685,17 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 380607983}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.00011672299}
-  m_LocalScale: {x: 0.15121, y: 0.86126006, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -2.7271757}
+  m_LocalScale: {x: 0.15121, y: 0.86, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 604660904}
   - {fileID: 1561827038}
-  m_Father: {fileID: 1799981514}
+  m_Father: {fileID: 269298626}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: -59118.797, y: 21856.82}
   m_SizeDelta: {x: 472.29, y: 408.11}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &380607985
@@ -741,6 +777,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 654252952}
+        m_TargetAssemblyTypeName: ShopManagerScript, Assembly-CSharp
+        m_MethodName: DestroyButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 380607986}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1115,6 +1163,13 @@ MonoBehaviour:
   - {fileID: 8965640741260561303, guid: 5237e8d10554f7b4488c1dba129dbb93, type: 3}
   - {fileID: 6694273422602180282, guid: 7a0e9f651340d2b4b803cfc45234a828, type: 3}
   - {fileID: 574125377082201053, guid: cc37f6eddc708cc4e8207275b3c376ef, type: 3}
+  shopButtons:
+  - {fileID: 1103506438}
+  - {fileID: 954353901}
+  - {fileID: 1011984988}
+  - {fileID: 830915190}
+  - {fileID: 380607986}
+  shopPanel: {fileID: 1799981514}
 --- !u!4 &654252953
 Transform:
   m_ObjectHideFlags: 0
@@ -1428,17 +1483,17 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 830915187}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.00011672299}
-  m_LocalScale: {x: 0.15121, y: 0.86126006, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -2.7271757}
+  m_LocalScale: {x: 0.15121, y: 0.86, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1180612932}
   - {fileID: 656306692}
-  m_Father: {fileID: 1799981514}
+  m_Father: {fileID: 269298626}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: -45910.18, y: 21856.82}
   m_SizeDelta: {x: 472.29, y: 408.11}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &830915189
@@ -1521,6 +1576,18 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 654252952}
+        m_TargetAssemblyTypeName: ShopManagerScript, Assembly-CSharp
+        m_MethodName: DestroyButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 830915190}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -1866,12 +1933,20 @@ PrefabInstance:
       propertyPath: m_AdditionalShaderChannelsFlag
       value: 25
       objectReference: {fileID: 0}
-    - target: {fileID: 5336522970276748695, guid: 3682cadd6e762364e9b6283072da6c44, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+    - target: {fileID: 4702781328765405542, guid: 3682cadd6e762364e9b6283072da6c44, type: 3}
+      propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5336522970276748695, guid: 3682cadd6e762364e9b6283072da6c44, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5336522970276748695, guid: 3682cadd6e762364e9b6283072da6c44, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5336522970276748695, guid: 3682cadd6e762364e9b6283072da6c44, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5336522970276748695, guid: 3682cadd6e762364e9b6283072da6c44, type: 3}
@@ -1879,11 +1954,23 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 654252952}
     - target: {fileID: 5336522970276748695, guid: 3682cadd6e762364e9b6283072da6c44, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 654252952}
+    - target: {fileID: 5336522970276748695, guid: 3682cadd6e762364e9b6283072da6c44, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5336522970276748695, guid: 3682cadd6e762364e9b6283072da6c44, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5336522970276748695, guid: 3682cadd6e762364e9b6283072da6c44, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: RefreshShop
+      objectReference: {fileID: 0}
+    - target: {fileID: 5336522970276748695, guid: 3682cadd6e762364e9b6283072da6c44, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: Buy
       objectReference: {fileID: 0}
     - target: {fileID: 5336522970276748695, guid: 3682cadd6e762364e9b6283072da6c44, type: 3}
@@ -1891,7 +1978,15 @@ PrefabInstance:
       value: ShopManagerScript, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5336522970276748695, guid: 3682cadd6e762364e9b6283072da6c44, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: ShopManagerScript, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5336522970276748695, guid: 3682cadd6e762364e9b6283072da6c44, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5336522970276748695, guid: 3682cadd6e762364e9b6283072da6c44, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 6525203631718357422, guid: 3682cadd6e762364e9b6283072da6c44, type: 3}
@@ -1942,21 +2037,6 @@ PrefabInstance:
     - {fileID: 1034985803410162505, guid: 3682cadd6e762364e9b6283072da6c44, type: 3}
     - {fileID: 5281032486133338230, guid: 3682cadd6e762364e9b6283072da6c44, type: 3}
     m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 8088769816760906928, guid: 3682cadd6e762364e9b6283072da6c44, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1103506436}
-    - targetCorrespondingSourceObject: {fileID: 8088769816760906928, guid: 3682cadd6e762364e9b6283072da6c44, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 954353899}
-    - targetCorrespondingSourceObject: {fileID: 8088769816760906928, guid: 3682cadd6e762364e9b6283072da6c44, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1011984986}
-    - targetCorrespondingSourceObject: {fileID: 8088769816760906928, guid: 3682cadd6e762364e9b6283072da6c44, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 830915188}
-    - targetCorrespondingSourceObject: {fileID: 8088769816760906928, guid: 3682cadd6e762364e9b6283072da6c44, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 380607984}
     - targetCorrespondingSourceObject: {fileID: 3495155719838822160, guid: 3682cadd6e762364e9b6283072da6c44, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1810280917}
@@ -2010,17 +2090,17 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 954353898}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.00011672299}
-  m_LocalScale: {x: 0.15121, y: 0.86126006, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -2.7271757}
+  m_LocalScale: {x: 0.15121, y: 0.86, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 64842467}
   - {fileID: 994271995}
-  m_Father: {fileID: 1799981514}
+  m_Father: {fileID: 269298626}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: -31190.703, y: 21856.82}
   m_SizeDelta: {x: 472.29, y: 408.11}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &954353900
@@ -2103,6 +2183,18 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 654252952}
+        m_TargetAssemblyTypeName: ShopManagerScript, Assembly-CSharp
+        m_MethodName: DestroyButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 954353901}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -2349,17 +2441,17 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1011984985}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.00011672299}
-  m_LocalScale: {x: 0.15121, y: 0.86126006, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -2.7271757}
+  m_LocalScale: {x: 0.15121, y: 0.86, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 259427926}
   - {fileID: 1538027850}
-  m_Father: {fileID: 1799981514}
+  m_Father: {fileID: 269298626}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: -34691.883, y: 21856.82}
   m_SizeDelta: {x: 472.29, y: 408.11}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1011984987
@@ -2442,6 +2534,18 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 654252952}
+        m_TargetAssemblyTypeName: ShopManagerScript, Assembly-CSharp
+        m_MethodName: DestroyButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1011984988}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -2554,17 +2658,17 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1103506435}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.00011672299}
-  m_LocalScale: {x: 0.15121, y: 0.86126006, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -2.7271757}
+  m_LocalScale: {x: 0.15121, y: 0.86, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 698669488}
   - {fileID: 156249806}
-  m_Father: {fileID: 1799981514}
+  m_Father: {fileID: 269298626}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: -20687.158, y: 21856.82}
   m_SizeDelta: {x: 472.29, y: 408.11}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1103506437
@@ -2646,6 +2750,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 654252952}
+        m_TargetAssemblyTypeName: ShopManagerScript, Assembly-CSharp
+        m_MethodName: DestroyButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1103506438}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -3422,14 +3538,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: -199
+    m_Left: -193
     m_Right: 0
     m_Top: 0
-    m_Bottom: 0
+    m_Bottom: 3
   m_ChildAlignment: 4
-  m_Spacing: -362.7
-  m_ChildForceExpandWidth: 1
-  m_ChildForceExpandHeight: 1
+  m_Spacing: -365.82
+  m_ChildForceExpandWidth: 0
+  m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 0
   m_ChildControlHeight: 0
   m_ChildScaleWidth: 0
@@ -3804,3 +3920,4 @@ SceneRoots:
   - {fileID: 604240806}
   - {fileID: 911071079}
   - {fileID: 654252953}
+  - {fileID: 269298626}
