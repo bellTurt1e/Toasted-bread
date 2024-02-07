@@ -17,16 +17,16 @@ public class Player : MonoBehaviour {
         return playerId;
     }
 
-    public void SetupPlayer(string name, int id) {
+    public void setupPlayer(string name, int id) {
         playerName = name;
         playerId = id;
     }
 
-    public void AddCoins(int amount) {
+    public void addCoins(int amount) {
         coins += amount;
     }
 
-    public bool SpendCoins(int amount) {
+    public bool spendCoins(int amount) {
         if (coins >= amount) {
             coins -= amount;
             return true;
@@ -34,14 +34,18 @@ public class Player : MonoBehaviour {
         return false;
     }
 
-    public void AddXP(int amount) {
+    public int getCoins() {
+        return coins;
+    }
+
+    public void addXP(int amount) {
         currentXP += amount;
         while (level - 1 < xpRequirements.Count && currentXP >= xpRequirements[level - 1]) {
-            LevelUp();
+            levelUp();
         }
     }
 
-    private void LevelUp() {
+    private void levelUp() {
         level++;
         currentXP = 0;
         maxUnitCount++;

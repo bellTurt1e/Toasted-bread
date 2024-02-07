@@ -84,7 +84,7 @@ public class ShopManagerScript : MonoBehaviour
         }
     }
 
-    public void ShuffleShopItems()
+    public void ShuffleShopItems() // yo wtf how does this work
     {
         // Randomize the order of units in the shop
         System.Random rng = new System.Random();

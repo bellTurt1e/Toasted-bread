@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2194101461501858641}
   m_Layer: 0
   m_Name: Fighter
-  m_TagString: Untagged
+  m_TagString: Unit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -129,6 +129,7 @@ MonoBehaviour:
   movementSpeed: 17
   attackRange: 10
   teamId: 0
+  enemyTeamId: 0
   healthBar: {fileID: 2785623098305327251}
   projectilePrefab: {fileID: 3019108218808229213, guid: 2dbdd854f615d9c45b93d0a23342618c, type: 3}
   power: 20

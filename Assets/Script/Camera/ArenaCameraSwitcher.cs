@@ -1,15 +1,20 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ArenaCameraSwitcher : MonoBehaviour {
-    public Camera[] cameras;
+    private List<GameObject> cameras;
     private int currentCameraIndex;
 
     void Start() {
-        foreach (Camera cam in cameras) {
-            cam.gameObject.SetActive(false);
+        cameras = new List<GameObject>(); // Initialize the list
+
+        GameObject[] camerasWithTag = GameObject.FindGameObjectsWithTag("ArenaCamera");
+        foreach (GameObject cam in camerasWithTag) {
+            cameras.Add(cam); // Add found camera to the list
+            Debug.Log("Found ArenaCamera by Tag: " + cam.name);
         }
 
-        if (cameras.Length > 0) {
+        if (cameras.Count > 0) {
             cameras[0].gameObject.SetActive(true);
         }
     }
@@ -26,7 +31,7 @@ public class ArenaCameraSwitcher : MonoBehaviour {
 
     void SwitchCamera(int direction) {
         cameras[currentCameraIndex].gameObject.SetActive(false);
-        currentCameraIndex = (currentCameraIndex + direction + cameras.Length) % cameras.Length;
+        currentCameraIndex = (currentCameraIndex + direction + cameras.Count) % cameras.Count;
         cameras[currentCameraIndex].gameObject.SetActive(true);
     }
 }
