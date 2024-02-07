@@ -598,7 +598,7 @@ GameObject:
   - component: {fileID: 6825844926424075779}
   m_Layer: 0
   m_Name: Warlock
-  m_TagString: Untagged
+  m_TagString: Unit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -712,6 +712,7 @@ MonoBehaviour:
   movementSpeed: 5
   attackRange: 50
   teamId: 0
+  enemyTeamId: 0
   healthBar: {fileID: 7653869575793748828}
   projectilePrefab: {fileID: 3019108218808229213, guid: 2dbdd854f615d9c45b93d0a23342618c, type: 3}
   spellPower: 20

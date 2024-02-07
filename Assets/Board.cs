@@ -6,4 +6,8 @@ public class Board : MonoBehaviour
 {
     [SerializeField] int boardId;
 
+    public void setBoardId(int boardId) {
+        this.boardId = boardId;
+    }
+
 }

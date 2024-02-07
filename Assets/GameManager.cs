@@ -3,35 +3,27 @@ using UnityEngine;
 public class GameManager : MonoBehaviour {
     public Player playerPrefab; // Assign the comprehensive player prefab in the Inspector
     public float xValue = 0;
+    
+
+    [SerializeField] int playerIdCounter = 0;
 
     private void Start() {
-        SpawnPlayer(1, "Cam");
-        SpawnPlayer(2, "ray");
+        SpawnPlayer("Cam");
+        SpawnPlayer("ray");
     }
 
-    public void SpawnPlayer(int playerId, string playerName) {
-        // Instantiate the player prefab
+    public void SpawnPlayer(string playerName) {
         Player newPlayer = Instantiate(playerPrefab);
 
         // Setup the player
-        newPlayer.SetupPlayer(playerName, playerId);
-
-        // Additional setup as needed, such as positioning the player's board and camera
-        PositionPlayerBoard(newPlayer, playerId);
-
-        // Optionally, set up the player's shop UI
-        //newPlayer.SetupShop();
-
-        // Any other player-specific initialization can be done here
+        newPlayer.setupPlayer(playerName, playerIdCounter); // create a new player and set the player name and id
+        PositionPlayerBoard(newPlayer); // position board starting at 0,0,0 then placing the next one 100 on the x distance away
+        playerIdCounter++;
     }
 
-    void PositionPlayerBoard(Player player, int playerId) {
-        // Example positioning logic based on playerId
-        
-        Vector3 boardPosition = new Vector3(xValue, 100f, 100f); // Just an example
+    void PositionPlayerBoard(Player player) {  
+        Vector3 boardPosition = new Vector3(xValue, 0, 0);
         player.transform.position = boardPosition;
         xValue += 100;
-
-        // Adjust the camera and other components as necessary
     }
 }

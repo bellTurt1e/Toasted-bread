@@ -6,8 +6,10 @@ TagManager:
   tags:
   - projectilePrefab
   - unitNameText
-  - arena2Cam
   - Event
+  - Unit
+  - playerBoard
+  - ArenaCamera
   layers:
   - Default
   - TransparentFX
