@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Player : MonoBehaviour {
@@ -25,6 +26,13 @@ public class Player : MonoBehaviour {
         }
     }
 
+    public string getPlayerName() {
+        return playerName;
+    }
+
+    public int getPlayerLevel() {
+        return level;
+    }
     public int getPlayerId() {
         return playerId;
     }
@@ -83,6 +91,7 @@ public class Player : MonoBehaviour {
         level++;
         currentXP = 0;
         maxUnitCount++;
+        board.updateLevelText();
     }
 
     public int getMaxUnitCount() {
