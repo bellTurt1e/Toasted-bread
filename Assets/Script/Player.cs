@@ -7,11 +7,20 @@ public class Player : MonoBehaviour {
     [SerializeField] private int coins = 0;
     [SerializeField] private int level = 1;
     [SerializeField] private int playerId;
-    [SerializeField] private int currentXP = 0;
+    [SerializeField] private int currentXP = 1;
     [SerializeField] private int maxUnitCount = 1;
     [SerializeField] private List<Unit> units = new List<Unit>();
     [SerializeField] private List<int> xpRequirements = new List<int>();
     [SerializeField] private LevelData levelData;
+
+    private void InitializeXpRequirements() {
+        if (levelData != null) {
+            xpRequirements = new List<int>(levelData.xpRequirements);
+        }
+        else {
+            Debug.LogWarning("LevelData not assigned for player " + playerName);
+        }
+    }
 
     public int getPlayerId() {
         return playerId;
@@ -20,6 +29,7 @@ public class Player : MonoBehaviour {
     public void setupPlayer(string name, int id) {
         playerName = name;
         playerId = id;
+        InitializeXpRequirements();
     }
 
     public void addCoins(int amount) {
@@ -43,6 +53,17 @@ public class Player : MonoBehaviour {
         while (level - 1 < xpRequirements.Count && currentXP >= xpRequirements[level - 1]) {
             levelUp();
         }
+    }
+
+    public int getRequiredXp() {
+        if (level == 1) {
+            return xpRequirements[0];
+        }
+        return xpRequirements[level - 1];
+    }
+
+    public int getXp() {
+        return currentXP;
     }
 
     private void levelUp() {
