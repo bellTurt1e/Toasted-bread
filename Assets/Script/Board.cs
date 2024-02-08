@@ -20,7 +20,7 @@ public class Board : MonoBehaviour
 
     public void setPlayerInfoOnBoard() {
         playerName.text = player.getPlayerName().ToString();
-        playerLevel.text = player.getPlayerLevel().ToString();
+        updateLevelText();
     }
 
     public void updateLevelText() {
