@@ -48,4 +48,4 @@ MonoBehaviour:
   prefab: {fileID: 2194101461501858641, guid: cc37f6eddc708cc4e8207275b3c376ef, type: 3}
   prefabIcon: {fileID: 21300000, guid: 2b432bb6c7d443b47ac8ec2c12ab214a, type: 3}
   cost: 1
-  quantity: 24
+  quantity: 10

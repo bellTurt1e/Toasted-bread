@@ -15,6 +15,4 @@ public class ShopItemButton : MonoBehaviour {
     public void clearItem() {
         item = null;    
     }
-
-   
 }
