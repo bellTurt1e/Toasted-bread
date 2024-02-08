@@ -3,13 +3,16 @@ using UnityEngine;
 public class GameManager : MonoBehaviour {
     public Player playerPrefab; // Assign the comprehensive player prefab in the Inspector
     public float xValue = 0;
-    
+    public ArenaCameraSwitcher cameraSwitcher; // Assign this in the Inspector
+
+
 
     [SerializeField] int playerIdCounter = 0;
 
     private void Start() {
         SpawnPlayer("Cam");
         SpawnPlayer("ray");
+        cameraSwitcher.SetupCameras();
     }
 
     public void SpawnPlayer(string playerName) {

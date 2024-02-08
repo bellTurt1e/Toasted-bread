@@ -3,6 +3,7 @@ using UnityEngine;
 public class CameraLockOn : MonoBehaviour {
     public Transform playerBoardAnchor;
     public Transform opponentBoardAnchor;
+    [SerializeField] int cameraId;
 
     private float distance = 73f;
     private float angle = 55.95002f;
@@ -10,6 +11,10 @@ public class CameraLockOn : MonoBehaviour {
     private bool isMainView = true;
 
     public FadeController fadeController;
+
+    public void setCameraId(int cameraId) {
+        this.cameraId = cameraId;
+    }
 
     void Start() {
         SetCameraPosition(playerBoardAnchor, isMainView);

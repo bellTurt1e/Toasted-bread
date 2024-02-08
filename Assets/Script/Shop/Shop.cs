@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using static UnityEngine.UI.CanvasScaler;
 
-public class ShopScript : MonoBehaviour { 
+public class Shop : MonoBehaviour { 
     [SerializeField] private int shopId;
     [SerializeField] private List<ShopItem> availableUnits = new List<ShopItem>();
     [SerializeField] private TextMeshProUGUI coinsText;
@@ -20,7 +20,6 @@ public class ShopScript : MonoBehaviour {
         buttons = shopPanel.GetComponentsInChildren<Button>();
         foreach (var button in buttons) {
             button.onClick.AddListener(() => ButtonClicked(button));
-            Debug.Log("Adding click lister to: " + button.name);
         }
         updateCoins();
         populateShop();
