@@ -12,6 +12,9 @@ public class Player : MonoBehaviour {
     [SerializeField] private List<Unit> units = new List<Unit>();
     [SerializeField] private List<int> xpRequirements = new List<int>();
     [SerializeField] private LevelData levelData;
+    public Board board; // Assign in the Inspector if possible
+    public Shop shop; // Assign in the Inspector if possible
+    public Camera playerCamera; // Assign in the Inspector if possible
 
     private void InitializeXpRequirements() {
         if (levelData != null) {
@@ -30,6 +33,16 @@ public class Player : MonoBehaviour {
         playerName = name;
         playerId = id;
         InitializeXpRequirements();
+
+        if (board != null) board.setBoardId(id);
+        if (shop != null) shop.setShopId(id);
+        if (playerCamera != null) {
+            CameraLockOn cameraLockOnScript;
+            if (playerCamera.TryGetComponent<CameraLockOn>(out cameraLockOnScript)) {
+                cameraLockOnScript.setCameraId(id);
+            }
+        }
+
     }
 
     public void addCoins(int amount) {

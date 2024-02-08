@@ -523,7 +523,7 @@ GameObject:
   - component: {fileID: 4959124627675090062}
   - component: {fileID: 8736805426053092922}
   m_Layer: 5
-  m_Name: Old Shop Prefab
+  m_Name: Shop UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -598,7 +598,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &4959124627675090062
 MonoBehaviour:
   m_ObjectHideFlags: 0
