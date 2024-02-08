@@ -27,6 +27,6 @@ public class GameManager : MonoBehaviour {
     void PositionPlayerBoard(Player player) {  
         Vector3 boardPosition = new Vector3(xValue, 0, 0);
         player.transform.position = boardPosition;
-        xValue += 100;
+        xValue += 400;
     }
 }
