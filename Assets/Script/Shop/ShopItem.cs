@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class ShopItem : MonoBehaviour {
     [SerializeField] string unitName;
-    [SerializeField] Unit prefab;
+    [SerializeField] Unit unit;
     [SerializeField] Sprite prefabIcon;
     [SerializeField] int cost;
     [SerializeField] int quantity;
@@ -14,8 +14,8 @@ public class ShopItem : MonoBehaviour {
         return unitName; 
     }    
 
-    public Unit getPrefab() {
-        return prefab;
+    public Unit getUnit() {
+        return unit;
     }
 
     public Sprite getSprite() {

@@ -11,7 +11,6 @@ public class GameManager : MonoBehaviour {
 
     private void Start() {
         SpawnPlayer("Cam");
-        SpawnPlayer("ray");
         cameraSwitcher.SetupCameras();
     }
 
