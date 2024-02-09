@@ -2,27 +2,39 @@ using System;
 using UnityEngine;
 
 public class Unit : MonoBehaviour {
-    public int health = 100;
-    public int maxHealth;
-    public float basicAttack = 10f;
-    public float attackTimer = 0;
-    public float attackCooldown = 1.0f;
-    public float magicalDefense = 5f;
-    public float physicalDefense = 5f;
-    public float movementSpeed = 25f;
-    public float attackRange = 1.0f;
-    public int teamId;
-    public int enemyTeamId;
+    [SerializeField] private int health = 100;
+    [SerializeField] private int maxHealth;
+    [SerializeField] private float basicAttack = 10f;
+    [SerializeField] private float attackTimer = 0;
+    [SerializeField] private float attackCooldown = 1.0f;
+    [SerializeField] private float magicalDefense = 5f;
+    [SerializeField] private float physicalDefense = 5f;
+    [SerializeField] private float movementSpeed = 25f;
+    [SerializeField] private float attackRange = 1.0f;
+    [SerializeField] private int teamId;
+    [SerializeField] private int enemyTeamId;
+    [SerializeField] bool hasTarget = false;
+    [SerializeField] bool inRange = false;
+    public int Health { get => health; set => health = value; }
+    public int MaxHealth { get => maxHealth; set => maxHealth = value; }
+    public float BasicAttack { get => basicAttack; set => basicAttack = value; }
+    public float AttackTimer { get => attackTimer; set => attackTimer = value; }
+    public float AttackCooldown { get => attackCooldown; set => attackCooldown = value; }
+    public float MagicalDefense { get => magicalDefense; set => magicalDefense = value; }
+    public float PhysicalDefense { get => physicalDefense; set => physicalDefense = value; }
+    public float MovementSpeed { get => movementSpeed; set => movementSpeed = value; }
+    public float AttackRange { get => attackRange; set => attackRange = value; }
+    protected bool HasTarget { get => hasTarget; set => hasTarget = value; }
+    protected bool InRange { get => inRange; set => inRange = value; }
+    public int TeamId { get => teamId; set => teamId = value; }
+    public int EnemyTeamId { get => enemyTeamId; set => enemyTeamId = value; }
+
+    public delegate void UnitDeathHandler(Unit unit);
+    public static event UnitDeathHandler OnUnitDeath;
 
     public HealthBar healthBar;
     protected Unit closestEnemy;
     public GameObject projectilePrefab;
-
-    protected bool hasTarget = false;
-    protected bool inRange = false;
-
-    public delegate void UnitDeathHandler(Unit unit);
-    public static event UnitDeathHandler OnUnitDeath;
 
     protected virtual void Start() {
         maxHealth = health;

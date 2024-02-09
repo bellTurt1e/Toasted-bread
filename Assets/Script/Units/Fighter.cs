@@ -25,7 +25,7 @@ public class Fighter : Unit {
     protected override void Update() {
         base.Update();
         
-        if (rage >= maxRage && inRange && hasTarget) {
+        if (rage >= maxRage && InRange && HasTarget) {
             PerformSpecialAttack();
         }
     }

@@ -4,10 +4,7 @@ public class GameManager : MonoBehaviour {
     public Player playerPrefab; // Assign the comprehensive player prefab in the Inspector
     public float xValue = 0;
     public ArenaCameraSwitcher cameraSwitcher; // Assign this in the Inspector
-
-
-
-    [SerializeField] int playerIdCounter = 0;
+    [SerializeField] int playerIdCounter = 12;
 
     private void Start() {
         SpawnPlayer("Cam");

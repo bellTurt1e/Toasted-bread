@@ -199,7 +199,7 @@ MonoBehaviour:
   playerPrefab: {fileID: 4576224691830534738, guid: 2298516cd756f664390e5b66b1b33b1c, type: 3}
   xValue: 0
   cameraSwitcher: {fileID: 69384109}
-  playerIdCounter: 0
+  playerIdCounter: 12
 --- !u!4 &836054838
 Transform:
   m_ObjectHideFlags: 0

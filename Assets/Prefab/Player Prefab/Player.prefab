@@ -3512,7 +3512,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99360b56748d5884ea2683c07486eb2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isBenchTile: 0
+  isBenchTile: 1
   isOccupied: 0
   unit: {fileID: 0}
 --- !u!4 &1146264820458368059 stripped
@@ -3558,7 +3558,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99360b56748d5884ea2683c07486eb2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isBenchTile: 0
+  isBenchTile: 1
   isOccupied: 0
   unit: {fileID: 0}
 --- !u!4 &2956536309022227270 stripped
@@ -3583,7 +3583,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99360b56748d5884ea2683c07486eb2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isBenchTile: 0
+  isBenchTile: 1
   isOccupied: 0
   unit: {fileID: 0}
 --- !u!4 &4241291359713840934 stripped
@@ -3618,7 +3618,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99360b56748d5884ea2683c07486eb2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isBenchTile: 0
+  isBenchTile: 1
   isOccupied: 0
   unit: {fileID: 0}
 --- !u!1 &4873751128996542848 stripped
@@ -3638,7 +3638,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99360b56748d5884ea2683c07486eb2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isBenchTile: 0
+  isBenchTile: 1
   isOccupied: 0
   unit: {fileID: 0}
 --- !u!1 &5790395274201768450 stripped
@@ -3658,7 +3658,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99360b56748d5884ea2683c07486eb2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isBenchTile: 0
+  isBenchTile: 1
   isOccupied: 0
   unit: {fileID: 0}
 --- !u!4 &6712557598235208526 stripped
@@ -3688,7 +3688,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99360b56748d5884ea2683c07486eb2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isBenchTile: 0
+  isBenchTile: 1
   isOccupied: 0
   unit: {fileID: 0}
 --- !u!4 &8715766445893700651 stripped
@@ -3713,6 +3713,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99360b56748d5884ea2683c07486eb2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isBenchTile: 0
+  isBenchTile: 1
   isOccupied: 0
   unit: {fileID: 0}
