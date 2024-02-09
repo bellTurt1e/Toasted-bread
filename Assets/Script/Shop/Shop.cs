@@ -37,7 +37,7 @@ public class Shop : MonoBehaviour {
             updateCoins();
             button.interactable = false;
             //Unit spawns on bench. make a spawn method. ... we're gonna get the unit prefab from shopTiemButton(Inharitence)
-            board.SpawnUnit(shopItem.GetComponent<ShopItemButton>().getItem().getPrefab());
+            board.SpawnUnit(button.GetComponent<ShopItemButton>().getItem().getUnit());
             button.GetComponent<ShopItemButton>().clearItem();
             button.GetComponentInParent<Image>().sprite = null;
         }
