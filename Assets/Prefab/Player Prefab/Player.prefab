@@ -1245,6 +1245,7 @@ MonoBehaviour:
   player: {fileID: 4576224691830534738}
   shopPanel: {fileID: 8538771775869161001}
   buttons: []
+  board: {fileID: 1792639105246901544}
 --- !u!224 &1711218079546444781 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1261479847065612660, guid: 3682cadd6e762364e9b6283072da6c44, type: 3}
