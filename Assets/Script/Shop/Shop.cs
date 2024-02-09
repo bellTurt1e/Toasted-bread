@@ -15,6 +15,8 @@ public class Shop : MonoBehaviour {
     [SerializeField] private Player player;
     [SerializeField] private Transform shopPanel;
     [SerializeField] private Button[] buttons;
+    //[SerializeField] private Transform[] playerBench;
+    public Board board;
 
     void Start() {
         buttons = shopPanel.GetComponentsInChildren<Button>();
@@ -31,13 +33,15 @@ public class Shop : MonoBehaviour {
         ShopItem shopItem = button.GetComponent<ShopItemButton>().getItem();
         Debug.Log("Shop item cost is: " + shopItem.getCost() + ". Player coin is at: "  +  player.getCoins() + ". And the shop item quantity is: " + shopItem.getQuantity());
         if (shopItem.getCost() <= player.getCoins() && shopItem.getQuantity() > 0) {
-            Debug.Log("Trevor likes men");
             player.spendCoins(shopItem.getCost());
             updateCoins();
             button.interactable = false;
+            //Unit spawns on bench. make a spawn method. ... we're gonna get the unit prefab from shopTiemButton(Inharitence)
+            board.SpawnUnit(shopItem.GetComponent<ShopItemButton>().getItem().getPrefab());
             button.GetComponent<ShopItemButton>().clearItem();
             button.GetComponentInParent<Image>().sprite = null;
         }
+        
     }
 
     public void rerollShop() {
