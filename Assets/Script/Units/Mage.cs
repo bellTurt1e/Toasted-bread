@@ -21,7 +21,7 @@ public class Mage : Unit {
         mana = Mathf.Min(mana + manaIncreaseRate * Time.deltaTime, maxMana);
         manaBar.SetMana(mana);
 
-        if (mana >= maxMana && inRange && hasTarget) {
+        if (mana >= maxMana && InRange && HasTarget) {
             PerformSpecialAttack();
         }
     }
@@ -51,12 +51,12 @@ public class Mage : Unit {
             yield break;
         }
 
-        float originalCooldown = enemy.attackCooldown;
-        enemy.attackCooldown *= 2;
+        float originalCooldown = enemy.AttackCooldown;
+        enemy.AttackCooldown *= 2;
         yield return new WaitForSeconds(duration);
 
         if (enemy != null && enemy.gameObject != null) {
-            enemy.attackCooldown = originalCooldown;
+            enemy.AttackCooldown = originalCooldown;
         }
     }
 

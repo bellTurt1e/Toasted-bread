@@ -17,6 +17,13 @@ public class Player : MonoBehaviour {
     public Shop shop; // Assign in the Inspector if possible
     public Camera playerCamera; // Assign in the Inspector if possible
 
+    public string PlayerName { get => playerName; set => playerName = value; }
+    public int Coins { get => coins; set => coins = value; }
+    public int Level { get => level; set => level = value; }
+    public int PlayerId { get => playerId; set => playerId = value; }
+    public int CurrentXP { get => currentXP; set => currentXP = value; }
+    public int MaxUnitCount { get => maxUnitCount; set => maxUnitCount = value; }
+
     private void InitializeXpRequirements() {
         if (levelData != null) {
             xpRequirements = new List<int>(levelData.xpRequirements);
@@ -26,24 +33,13 @@ public class Player : MonoBehaviour {
         }
     }
 
-    public string getPlayerName() {
-        return playerName;
-    }
-
-    public int getPlayerLevel() {
-        return level;
-    }
-    public int getPlayerId() {
-        return playerId;
-    }
-
     public void setupPlayer(string name, int id) {
         playerName = name;
         playerId = id;
         InitializeXpRequirements();
 
-        if (board != null) board.setBoardId(id);
-        if (shop != null) shop.setShopId(id);
+        if (board != null) board.BoardId = id;
+        if (shop != null) shop.ShopId = id;
         if (playerCamera != null) {
             CameraLockOn cameraLockOnScript;
             if (playerCamera.TryGetComponent<CameraLockOn>(out cameraLockOnScript)) {
@@ -94,15 +90,10 @@ public class Player : MonoBehaviour {
         board.updateLevelText();
     }
 
-    public int getMaxUnitCount() {
-        return maxUnitCount;
-    }
-
-
     public void AddUnit(Unit unit) {
-        if (units.Count < getMaxUnitCount()) {
+        if (units.Count < MaxUnitCount) {
             units.Add(unit);
-            unit.teamId = playerId;
+            unit.TeamId = playerId;
         }
         else {
             // Do nothing (for now)

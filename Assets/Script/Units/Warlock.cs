@@ -20,7 +20,7 @@ public class Warlock : Unit {
         mana = Mathf.Min(mana + manaIncreaseRate * Time.deltaTime, maxMana);
         manaBar.SetMana(mana);
 
-        if (mana >= maxMana && inRange && hasTarget) {
+        if (mana >= maxMana && InRange && HasTarget) {
             PerformSpecialAttack();
         }
     }
@@ -39,12 +39,12 @@ public class Warlock : Unit {
         float timePassed = 0f;
         float halfDuration = totalDuration / 3f;
         bool attackPowerReduced = false;
-        float originalBasicAttack = target.basicAttack;
+        float originalBasicAttack = target.BasicAttack;
 
         while (timePassed < totalDuration) {
             if (target == null) {
                 if (attackPowerReduced) {
-                    target.basicAttack = originalBasicAttack;
+                    target.BasicAttack = originalBasicAttack;
                 }
                 yield break;
             }
@@ -52,7 +52,7 @@ public class Warlock : Unit {
             target.TakeDamage(damagePerSecond, "mag");
 
             if (timePassed < halfDuration && !attackPowerReduced) {
-                target.basicAttack -= attackPowerLowered;
+                target.BasicAttack -= attackPowerLowered;
                 attackPowerReduced = true;
             }
 
@@ -60,13 +60,13 @@ public class Warlock : Unit {
             timePassed += 1f;
 
             if (timePassed >= halfDuration && attackPowerReduced) {
-                target.basicAttack = originalBasicAttack;
+                target.BasicAttack = originalBasicAttack;
                 attackPowerReduced = false;
             }
         }
 
         if (attackPowerReduced) {
-            target.basicAttack = originalBasicAttack;
+            target.BasicAttack = originalBasicAttack;
         }
     }
 

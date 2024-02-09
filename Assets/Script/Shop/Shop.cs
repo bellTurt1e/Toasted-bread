@@ -15,8 +15,9 @@ public class Shop : MonoBehaviour {
     [SerializeField] private Player player;
     [SerializeField] private Transform shopPanel;
     [SerializeField] private Button[] buttons;
-    //[SerializeField] private Transform[] playerBench;
-    public Board board;
+    [SerializeField] private Board board;
+
+    public int ShopId { get => shopId; set => shopId = value; }
 
     void Start() {
         buttons = shopPanel.GetComponentsInChildren<Button>();
@@ -60,13 +61,6 @@ public class Shop : MonoBehaviour {
 
             levelText.text = ("Level: " + player.getXp() + "/" + player.getRequiredXp()).ToString();
         } 
-    }
-
-    public void setShopId(int shopId) { 
-        this.shopId = shopId; 
-    }
-    public int getShopId() { 
-        return shopId; 
     }
 
     public void updateCoins() {

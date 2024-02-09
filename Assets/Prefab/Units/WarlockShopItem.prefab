@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitName: Warlock
-  prefab: {fileID: 6825844926424075779, guid: 7a0e9f651340d2b4b803cfc45234a828, type: 3}
+  unit: {fileID: 6825844926424075779, guid: 7a0e9f651340d2b4b803cfc45234a828, type: 3}
   prefabIcon: {fileID: 21300000, guid: 0facc0651b5ff974bba30987dc8468b1, type: 3}
   cost: 1
   quantity: 10

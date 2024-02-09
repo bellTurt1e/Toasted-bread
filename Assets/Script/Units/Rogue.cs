@@ -20,7 +20,7 @@ public class Rogue : Unit {
         energy = Mathf.Min(energy + energyIncreaseRate * Time.deltaTime, maxEnergy);
         energyBar.SetMana(energy);
 
-        if (energy >= maxEnergy && inRange && hasTarget) { 
+        if (energy >= maxEnergy && InRange && HasTarget) { 
             PerformSpecialAttack(); 
         } 
     } 

@@ -12,39 +12,40 @@ public class Board : MonoBehaviour
     [SerializeField] private List<Transform> benchTiles = new List<Transform>();
     [SerializeField] private List<Transform> occupiedTiles = new List<Transform>();
 
+    public int BoardId { get => boardId; set => boardId = value; }
+
     public void Start() {
         setPlayerInfoOnBoard();
     }
 
-    public void setBoardId(int boardId) {
-        this.boardId = boardId;
-    }
-
     public void setPlayerInfoOnBoard() {
-        playerName.text = player.getPlayerName().ToString();
+        playerName.text = player.PlayerName.ToString();
         updateLevelText();
     }
 
     public void updateLevelText() {
-        playerLevel.text = player.getPlayerLevel().ToString();
+        playerLevel.text = player.Level.ToString();
     }
 
-    public void SpawnUnit(Unit prefab) {
-        // Find an available tile dynamically
+    public void SpawnUnit(Unit unit) {
         Transform availableTileTransform = FindAvailableTile();
 
         if (availableTileTransform != null) {
-            // Access the BoardTile component to get the correct top position for spawning the unit
+            Debug.Log("The tile is not NULL!!");
             BoardTile availableTile = availableTileTransform.GetComponent<BoardTile>();
             if (availableTile != null) {
+                Debug.Log("We were able to access BoardTile on the not null tile!!");
                 Vector3 spawnPosition = availableTile.GetTileTopPosition(); // Get the top position from the BoardTile script
 
                 // Spawn the unit at the calculated top position of the available tile
-                Instantiate(prefab, spawnPosition, Quaternion.identity);
+                unit.TeamId = player.PlayerId;
+                Instantiate(unit, spawnPosition, Quaternion.identity);
+
                 Debug.Log("Spawning Unit at: " + spawnPosition);
+               
 
                 // Mark the tile as occupied by setting the unit
-                availableTile.setOccupied(prefab); // Assuming prefab is of type Unit and setOccupied accepts a Unit type
+                availableTile.setOccupied(unit); // Assuming prefab is of type Unit and setOccupied accepts a Unit type
 
                 // Optionally, if you have a list of occupied tiles, you can add the Transform of the tile to it
                 // occupiedTiles.Add(availableTileTransform);
@@ -62,8 +63,11 @@ public class Board : MonoBehaviour
     private Transform FindAvailableTile() {
         foreach (Transform tile in benchTiles) {
             BoardTile tileComponent = tile.GetComponent<BoardTile>(); // Get the BoardTile component of the tile
-            if (tileComponent != null && !tileComponent.getIsBenchTile() && !tileComponent.getOccupied()) { // Check if the tile is a bench tile
+            if (tileComponent != null && tileComponent.getIsBenchTile() && !tileComponent.getOccupied()) { // Check if the tile is a bench tile
+                Debug.Log("Returning available tile!");
                 return tile; // Return the first unoccupied tile
+            } else {
+                Debug.Log("The isBenchTile bool is set to: " + tileComponent.getIsBenchTile() + " and the isOccupied is set to: " + tileComponent.getOccupied());
             }
         }
 
