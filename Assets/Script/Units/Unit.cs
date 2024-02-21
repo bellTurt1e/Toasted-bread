@@ -37,8 +37,8 @@ public class Unit : MonoBehaviour {
     public GameObject projectilePrefab;
 
     protected virtual void Start() {
-        maxHealth = health;
-        healthBar.SetMaxHealth(maxHealth);
+        MaxHealth = Health;
+        healthBar.SetMaxHealth(MaxHealth);
     }
 
      protected virtual void Update() {
@@ -49,11 +49,11 @@ public class Unit : MonoBehaviour {
         if (closestEnemy != null) {
             MoveTowards(closestEnemy);
         } else {
-            hasTarget = false;
+            HasTarget = false;
         }
 
-        if (attackTimer > 0) {
-            attackTimer -= Time.deltaTime;
+        if (AttackTimer > 0) {
+            AttackTimer -= Time.deltaTime;
         }
     }
     private Unit FindClosestEnemy() {
@@ -63,7 +63,7 @@ public class Unit : MonoBehaviour {
         Vector3 currentPosition = transform.position;
 
         foreach (Unit unit in allUnits) {
-            if (unit.teamId != this.teamId && unit.teamId == this.enemyTeamId) {
+            if (unit.TeamId != this.TeamId && unit.TeamId == this.EnemyTeamId) {
                 float distance = Vector3.Distance(unit.transform.position, currentPosition);
                 if (distance < minDistance) {
                     closestEnemy = unit;
@@ -80,26 +80,26 @@ public class Unit : MonoBehaviour {
         float distance = Vector3.Distance(transform.position, enemy.transform.position);
         if (distance > attackRange) {
             transform.position = Vector3.MoveTowards(transform.position, enemy.transform.position, movementSpeed * Time.deltaTime);
-            inRange = false;
+            InRange = false;
         }
         else {
             Attack(enemy);
-            hasTarget = true;
-            inRange = true;
+            HasTarget = true;
+            InRange = true;
         }
     }
 
     protected virtual bool Attack(Unit target) {
         float distanceToTarget = Vector3.Distance(transform.position, target.transform.position);
-        if (distanceToTarget <= attackRange && attackTimer <= 0f) {
+        if (distanceToTarget <= AttackRange && AttackTimer <= 0f) {
             GameObject projectileObject = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
             ProjectileBall projectile = projectileObject.GetComponent<ProjectileBall>();
 
             if (projectile != null) {
-                projectile.Initialize(target, basicAttack, "phy");
+                projectile.Initialize(target, BasicAttack, "phy");
             }
 
-            attackTimer = attackCooldown;
+            AttackTimer = AttackCooldown;
             return true;
         }
 
@@ -127,11 +127,11 @@ public class Unit : MonoBehaviour {
                 break;
         }
 
-        health -= (int)Mathf.Round(effectiveDamage);
+        Health -= (int)Mathf.Round(effectiveDamage);
 
-        healthBar.SetHealth((int)health);
+        healthBar.SetHealth(Health);
 
-        if (health <= 0) {
+        if (Health <= 0) {
             KillUnit();
         }
     }
@@ -145,8 +145,8 @@ public class Unit : MonoBehaviour {
     }
 
     public void getHealed(float healAmount) {
-        health = (int)Mathf.Min(health + healAmount, maxHealth);
-        healthBar.SetHealth((int)health);
+        Health = (int)Mathf.Min(Health + healAmount, MaxHealth);
+        healthBar.SetHealth(Health);
     }
 
     protected virtual void KillUnit() {

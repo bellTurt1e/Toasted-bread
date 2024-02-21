@@ -32,8 +32,8 @@ public class Shop : MonoBehaviour {
     void ButtonClicked(Button button) {
         Debug.Log(button.name + " was clicked.");
         ShopItem shopItem = button.GetComponent<ShopItemButton>().getItem();
-        Debug.Log("Shop item cost is: " + shopItem.getCost() + ". Player coin is at: "  +  player.getCoins() + ". And the shop item quantity is: " + shopItem.getQuantity());
-        if (shopItem.getCost() <= player.getCoins() && shopItem.getQuantity() > 0) {
+        Debug.Log("Shop item cost is: " + shopItem.getCost() + ". Player coin is at: "  +  player.Coins + ". And the shop item quantity is: " + shopItem.getQuantity());
+        if (shopItem.getCost() <= player.Coins && shopItem.getQuantity() > 0) {
             player.spendCoins(shopItem.getCost());
             updateCoins();
             button.interactable = false;
@@ -46,7 +46,7 @@ public class Shop : MonoBehaviour {
     }
 
     public void rerollShop() {
-        if (player.getCoins() >= 2) {
+        if (player.Coins >= 2) {
             player.spendCoins(2);
             updateCoins();
             populateShop();    
@@ -54,7 +54,7 @@ public class Shop : MonoBehaviour {
     }
 
     public void addXp() {
-        if (player.getCoins() >= 2) {
+        if (player.Coins >= 2) {
             player.addXP(2);
             player.spendCoins(2);
             updateCoins();
@@ -64,7 +64,7 @@ public class Shop : MonoBehaviour {
     }
 
     public void updateCoins() {
-       coinsText.text = player.getCoins().ToString();
+       coinsText.text = player.Coins.ToString();
     }
 
 

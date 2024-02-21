@@ -34,8 +34,8 @@ public class Player : MonoBehaviour {
     }
 
     public void setupPlayer(string name, int id) {
-        playerName = name;
-        playerId = id;
+        PlayerName = name;
+        PlayerId = id;
         InitializeXpRequirements();
 
         if (board != null) board.BoardId = id;
@@ -49,44 +49,36 @@ public class Player : MonoBehaviour {
 
     }
 
-    public void addCoins(int amount) {
-        coins += amount;
-    }
-
     public bool spendCoins(int amount) {
-        if (coins >= amount) {
-            coins -= amount;
+        if (Coins >= amount) {
+            Coins -= amount;
             return true;
         }
         return false;
     }
 
-    public int getCoins() {
-        return coins;
-    }
-
     public void addXP(int amount) {
-        currentXP += amount;
-        while (level - 1 < xpRequirements.Count && currentXP >= xpRequirements[level - 1]) {
+        CurrentXP += amount;
+        while (Level - 1 < xpRequirements.Count && CurrentXP >= xpRequirements[level - 1]) {
             levelUp();
         }
     }
 
     public int getRequiredXp() {
-        if (level == 1) {
+        if (Level == 1) {
             return xpRequirements[0];
         }
         return xpRequirements[level - 1];
     }
 
     public int getXp() {
-        return currentXP;
+        return CurrentXP;
     }
 
     private void levelUp() {
-        level++;
-        currentXP = 0;
-        maxUnitCount++;
+        Level++;
+        CurrentXP = 0;
+        MaxUnitCount++;
         board.updateLevelText();
     }
 
